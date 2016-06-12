@@ -1,9 +1,7 @@
-test
-test
-test2:
-test2
-test 3: test3
-Andrei: Kas funktsionaalsus töötab?
 
-test4: test4
 
+Andrei: test
+Andrei: test2
+Andrei: test2
+Andrei: test2
+minu nimi: Andrei

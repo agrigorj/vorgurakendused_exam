@@ -24,17 +24,31 @@
 </form>
 <p>
 <?php
- if($_SERVER['REQUEST_METHOD'] == 'POST'){	
-$myfile = fopen("komments.txt", "a+") or die("Unable to open file!");
-$name = $_POST["name"].": ";
+$myfile = fopen("komments.txt", "r") or die("Unable to open file!");
+// Output one line until end-of-file
+while(!feof($myfile)) {
+  echo fgets($myfile) . "<br>";
+}
+fclose($myfile);
+?>
 
+<?php
+ if($_SERVER['REQUEST_METHOD'] == 'POST'){	
+ if($_POST["name"] == '' ||  $_POST["comment"] == ''){
+				$errors =array();
+				?>
+				<script>
+   				alert("Sisesta nimi ja kommentaar!");
+				</script>
+				<?php
+				}else{
+$myfile = fopen("komments.txt", "a+") or die("Unable to open file!");
+$name = htmlspecialchars($_POST["name"].": ");
 fwrite($myfile, $name);
-$comment= $_POST["comment"]."\n\n";
+$comment= htmlspecialchars($_POST["comment"]."\n");
 fwrite($myfile, $comment);
 fclose($myfile);
-$myfile = fopen("komments.txt", "r") or die("Unable to open file!");
-echo fread($myfile,filesize("komments.txt"));
-fclose($myfile);
+}
 }
 ?> 
 </p>
