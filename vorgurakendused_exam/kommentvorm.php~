@@ -24,22 +24,13 @@
 </form>
 <p>
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST'){	
-$myfile = fopen("komments.txt", "r") or die("Unable to open file!");
-// Output one line until end-of-file
-while(!feof($myfile)) {
-  echo fgets($myfile) . "<br>";
-}
-fclose($myfile);
-}else {
+
 	$myfile = fopen("komments.txt", "r") or die("Unable to open file!");
 // Output one line until end-of-file
 while(!feof($myfile)) {
   echo fgets($myfile) . "<br>";
 }
 fclose($myfile);
-}
-	
 	
 	
 ?>

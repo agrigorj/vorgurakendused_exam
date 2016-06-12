@@ -32,9 +32,7 @@ while(!feof($myfile)) {
 }
 fclose($myfile);
 	
-	
 ?>
-
 
 </p>
 <p> 
