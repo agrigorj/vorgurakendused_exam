@@ -5,3 +5,7 @@ Andrei: test2
 Andrei: test2
 Andrei: test2
 minu nimi: Andrei
+test: test
+test: test
+test3: test3
+Andrei: Scriptiga töötab paremini

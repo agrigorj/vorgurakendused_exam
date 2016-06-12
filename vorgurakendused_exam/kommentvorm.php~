@@ -7,7 +7,7 @@
 </head>
 <body>
 <h2>Lisa uus kommentaar</h2>
-<form action="kommentvorm.php" method="POST" enctype="multipart/form-data">
+<form action="reload.php" method="POST" enctype="multipart/form-data">
 <table cellspacing="10">
    <tr>
      <td>Sinu nimi<span style="color:red"> *</span>  <br /><br /></td>
@@ -24,33 +24,27 @@
 </form>
 <p>
 <?php
+if($_SERVER['REQUEST_METHOD'] == 'POST'){	
 $myfile = fopen("komments.txt", "r") or die("Unable to open file!");
 // Output one line until end-of-file
 while(!feof($myfile)) {
-  echo fgets($myfile) . "<br><br>";
+  echo fgets($myfile) . "<br>";
 }
 fclose($myfile);
+}else {
+	$myfile = fopen("komments.txt", "r") or die("Unable to open file!");
+// Output one line until end-of-file
+while(!feof($myfile)) {
+  echo fgets($myfile) . "<br>";
+}
+fclose($myfile);
+}
+	
+	
+	
 ?>
 
-<?php
- if($_SERVER['REQUEST_METHOD'] == 'POST'){	
- if($_POST["name"] == '' ||  $_POST["comment"] == ''){
-				$errors =array();
-				?>
-				<script>
-   				alert("Sisesta nimi ja kommentaar!");
-				</script>
-				<?php
-				}else{
-$myfile = fopen("komments.txt", "a+") or die("Unable to open file!");
-$name = htmlspecialchars($_POST["name"].": ");
-fwrite($myfile, $name);
-$comment= htmlspecialchars($_POST["comment"]."\n");
-fwrite($myfile, $comment);
-fclose($myfile);
-}
-}
-?> 
+
 </p>
 <p> 
  <a href="http://validator.w3.org/check?uri=referer">
